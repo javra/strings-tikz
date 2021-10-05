@@ -1,0 +1,124 @@
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,calc,shapes.misc,intersections}
+
+% Blocks with coordinates as parameters
+
+% String diagrams for braided monoidal categories
+\newcommand{\sdiagsstring}[3][1]{
+  \foreach \x in {1,...,#1}{
+    \draw (#2+\x-.5,#3) -- (#2+\x-.5,#3+1);
+  }
+}
+
+\newcommand{\sdiagscap}[3][1]{
+  \draw (#2+#1+.5,#3) arc (0:180:#1/2 and .5);
+}
+
+\newcommand{\sdiagscup}[3][1]{
+  \draw (#2+.5,#3+1) arc (-180:0:#1/2 and .5);
+}
+
+\newcommand{\sdiagsbox}[4][1]{
+  \foreach \x in {1,...,#1}{
+    \draw (#3+\x-.5,#4) -- (#3+\x-.5,#4+1);
+  }
+  \draw[draw=black,fill=white] (#3+.2,#4+.2) rectangle ++(#1-.4,0.6);
+  \node at (#3+#1/2,#4+.5) [anchor=center] {#2};
+}
+
+\newcommand{\sdiagsbraid}[3][1]{
+  \draw (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
+  \draw [draw=white,double=black,double distance=\pgflinewidth,ultra thick]
+    (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
+}
+
+\newcommand{\sdiagsbraidinv}[3][1]{
+  \sdiagsbraid[-#1]{#2+#1}{#3}
+}
+
+% Ribbon diagrams for tortile monoidal categories
+\newcommand{\sdiagsribbonbright}[3][1]{
+  \fill[gray!40] (#2+.5,#3) rectangle (#2+#1+.5,#3+1);
+  \draw[thick] (#2+.5,#3) -- (#2+.5,#3+1);
+  \draw (#2+#1+.5,#3) -- (#2+#1+.5,#3+1);
+}
+
+\newcommand{\sdiagsribbondark}[3][1]{
+  \fill[gray!75] (#2+.5,#3) rectangle (#2+#1+.5,#3+1);
+  \draw (#2+.5,#3) -- (#2+.5,#3+1);
+  \draw[thick] (#2+#1+.5,#3) -- (#2+#1+.5,#3+1);
+}
+
+\newcommand{\sdiagsribbonhalftwistdb}[3][1]{
+\begin{scope}
+  \clip (#2+.5,#3) rectangle ++(#1,.5);
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2+.5,#3+.5) rectangle ++(#1,.5);
+  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2,#3) rectangle ++(#1+1,.47)
+        (#2,#3+.53) rectangle ++(#1+1,1);
+  \draw (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
+\end{scope}
+  \draw [thick]
+    (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
+}
+
+\newcommand{\sdiagsribbonhalftwistbd}[3][1]{
+\begin{scope}
+  \clip (#2+.5,#3) rectangle ++(#1,.5);
+  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2+.5,#3+.5) rectangle ++(#1,.5);
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2,#3) rectangle ++(#1+1,.47)
+        (#2,#3+.53) rectangle ++(#1+1,1);
+  \draw [thick] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
+\end{scope}
+  \draw (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
+}
+
+\newcommand{\sdiagsribbonhalftwistinv}[3][1]{
+\begin{scope}
+  \clip (#2+.5,#3+.5) rectangle ++(#1,.5);
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2+.5,#3) rectangle ++(#1,.5);
+  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+    -- (#2+.5,#3)
+    to[out=90,in=-90] (#2+#1+.5,#3+1);
+\end{scope}
+\begin{scope}
+  \clip (#2,#3) rectangle ++(#1+1,.47)
+        (#2,#3+.53) rectangle ++(#1+1,1);
+  \draw (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
+\end{scope}
+  \draw [thick]
+    (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
+}
+
+\newcommand{\sdiagsribbontwist}[3][1]{
+  \sdiagsribbonhalftwistdb[#1]{#2}{#3+1}
+  \sdiagsribbonhalftwistbd[#1]{#2}{#3}
+}
+
+
+
