@@ -2,6 +2,9 @@
 
 \usetikzlibrary{arrows,calc,shapes.misc,intersections}
 
+\newcounter{sdiagsx} \setcounter{sdiagsx}{0}
+\newcounter{sdiagsy} \setcounter{sdiagsy}{0}
+
 % Blocks with coordinates as parameters
 
 % String diagrams for braided monoidal categories
@@ -120,5 +123,45 @@
   \sdiagsribbonhalftwistbd[#1]{#2}{#3}
 }
 
+% Versions of the above commands where the counter sdiagsx is forwarded
+% \sdiagsbr breaks the line:
+% It sets sdiagsx to zero and decrements sdiagsy
+\newcommand{\sdiagsbr}{
+  \setcounter{sdiagsx}{0}
+  \stepcounter{sdiagsy}
+}
 
+\newcommand{\sdiagsSTRING}[1][1]{
+  \sdiagsstring[#1]{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+}
+
+\newcommand{\sdiagsCAP}[1][1]{
+  \sdiagscap[#1]{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+  \stepcounter{sdiagsx}
+}
+
+\newcommand{\sdiagsCUP}[1][1]{
+  \sdiagscup[#1]{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+  \stepcounter{sdiagsx}
+}
+
+\newcommand{\sdiagsBOX}[2][1]{
+  \sdiagsbox[#1]{#2}{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+}
+
+\newcommand{\sdiagsBRAID}[1][1]{
+  \sdiagsbraid[#1]{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+  \stepcounter{sdiagsx}
+}
+
+\newcommand{\sdiagsBRAIDINV}[1][1]{
+  \sdiagsbraidinv[#1]{\thesdiagsx}{\thesdiagsy}
+  \addtocounter{sdiagsx}{#1}
+  \stepcounter{sdiagsx}
+}
 

@@ -5,6 +5,7 @@
 
 \begin{document}
 
+Simple string diagrams:
 
 \begin{tikzpicture}
 \sdiagsstring[5]{0}{0}
@@ -23,7 +24,7 @@
 \sdiagsbraidinv{1}{6}
 \end{tikzpicture}
 
-foo
+Ribbon diagrams:
 
 \begin{tikzpicture}
 \sdiagsribbonhalftwistdb{0}{1}
@@ -34,12 +35,18 @@ foo
 \sdiagsribbontwist{4}{0}
 \end{tikzpicture}
 
-bar
-
 \begin{tikzpicture}
 \sdiagsribbonhalftwistdb[2]{0}{1}
 \sdiagsribbonhalftwistinv[0.8]{0}{0}
 \sdiagsribbonhalftwistinv[0.8]{1.2}{0}
+\end{tikzpicture}
+
+Automatic advance:
+
+\begin{tikzpicture}
+\sdiagsBRAIDINV \sdiagsSTRING[3] \sdiagsbr
+\sdiagsSTRING \sdiagsCAP \sdiagsBOX{$m$} \sdiagsSTRING \sdiagsbr
+\sdiagsSTRING \sdiagsCUP \sdiagsBRAID
 \end{tikzpicture}
 
 \end{document}
