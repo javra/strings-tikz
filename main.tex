@@ -44,9 +44,32 @@ Ribbon diagrams:
 Automatic advance:
 
 \begin{tikzpicture}
-\sdiagsBRAIDINV \sdiagsSTRING[3] \sdiagsbr
+\sdiagsSTRING \sdiagsCUP \sdiagsBRAID \sdiagsbr
 \sdiagsSTRING \sdiagsCAP \sdiagsBOX{$m$} \sdiagsSTRING \sdiagsbr
-\sdiagsSTRING \sdiagsCUP \sdiagsBRAID
+\sdiagsBRAIDINV \sdiagsSTRING[3] \sdiagsbr
+\end{tikzpicture}
+
+Ring on a string:
+
+\begin{tikzpicture}
+\sdiagsSTRING[2] \sdiagsCAP \sdiagsbr
+\sdiagsSTRING \sdiagsBRAID \sdiagsSTRING \sdiagsbr
+\sdiagsBRAID \sdiagsSTRING[2] \sdiagsbr
+\sdiagsBRAID \sdiagsBRAIDINV \sdiagsbr
+\sdiagsSTRING \sdiagsBOX[2]{$r$} \sdiagsSTRING \sdiagsbr
+\sdiagsCUP \sdiagsCUP \sdiagsbr
+\end{tikzpicture}
+
+2-by-2 block:
+
+\begin{tikzpicture}
+\sdiagsCAP \sdiagsCAP \sdiagsbr
+\sdiagsSTRING \sdiagsBRAID \sdiagsSTRING \sdiagsbr
+\sdiagsSTRING[2] \sdiagsBRAIDINV \sdiagsbr
+\sdiagsSTRING \sdiagsBOX[2]{$r$} \sdiagsSTRING \sdiagsbr
+\sdiagsBRAID \sdiagsSTRING[2] \sdiagsbr
+\sdiagsBOX[4]{$b_{(1,1,1,1)}$} \sdiagsbr
+\sdiagsBOX{$m$} \sdiagsCUP \sdiagsBOX{$m$} \sdiagsbr
 \end{tikzpicture}
 
 \end{document}
