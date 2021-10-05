@@ -14,11 +14,11 @@ Simple string diagrams:
 \sdiagsstring{4}{1}
 \sdiagsstring{0}{2}
 \sdiagscap[3]{1}{2}
-\sdiagsbox[1]{$f^n$}{0}{3}
+\sdiagsbox{1}{1}{$f^n$}{0}{3}
 \sdiagscup{1}{3}
 \sdiagscup{3}{3}
-\sdiagsbox[2]{$g$}{0}{4}
-\sdiagsbox[3]{Nonsense}{2}{4}
+\sdiagsbox{2}{2}{$g$}{0}{4}
+\sdiagsbox{3}{3}{Nonsense}{2}{4}
 \sdiagsbraid{0}{5}
 \sdiagsbraid[2]{2}{5}
 \sdiagsbraidinv{1}{6}
@@ -45,7 +45,7 @@ Automatic advance:
 
 \begin{tikzpicture}
 \sdiagsSTRING \sdiagsCUP \sdiagsBRAID \sdiagsbr
-\sdiagsSTRING \sdiagsCAP \sdiagsBOX{$m$} \sdiagsSTRING \sdiagsbr
+\sdiagsSTRING \sdiagsCAP \sdiagsBOX{1}{1}{$m$} \sdiagsSTRING \sdiagsbr
 \sdiagsBRAIDINV \sdiagsSTRING[3] \sdiagsbr
 \end{tikzpicture}
 
@@ -56,7 +56,7 @@ Ring on a string:
 \sdiagsSTRING \sdiagsBRAID \sdiagsSTRING \sdiagsbr
 \sdiagsBRAID \sdiagsSTRING[2] \sdiagsbr
 \sdiagsBRAID \sdiagsBRAIDINV \sdiagsbr
-\sdiagsSTRING \sdiagsBOX[2]{$r$} \sdiagsSTRING \sdiagsbr
+\sdiagsSTRING \sdiagsBOX{2}{2}{$r$} \sdiagsSTRING \sdiagsbr
 \sdiagsCUP \sdiagsCUP \sdiagsbr
 \end{tikzpicture}
 
@@ -66,10 +66,10 @@ Ring on a string:
 \sdiagsCAP \sdiagsCAP \sdiagsbr
 \sdiagsSTRING \sdiagsBRAID \sdiagsSTRING \sdiagsbr
 \sdiagsSTRING[2] \sdiagsBRAIDINV \sdiagsbr
-\sdiagsSTRING \sdiagsBOX[2]{$r$} \sdiagsSTRING \sdiagsbr
+\sdiagsSTRING \sdiagsBOX{2}{2}{$r$} \sdiagsSTRING \sdiagsbr
 \sdiagsBRAID \sdiagsSTRING[2] \sdiagsbr
-\sdiagsBOX[4]{$b_{(1,1,1,1)}$} \sdiagsbr
-\sdiagsBOX{$m$} \sdiagsCUP \sdiagsBOX{$m$} \sdiagsbr
+\sdiagsBOX{4}{4}{$b_{(1,1,1,1)}$} \sdiagsbr
+\sdiagsBOX{1}{0}{$m$} \sdiagsCUP \sdiagsBOX{1}{0}{$m$} \sdiagsbr
 \end{tikzpicture}
 
 \end{document}
