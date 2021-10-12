@@ -27,18 +27,24 @@ Simple string diagrams:
 Ribbon diagrams:
 
 \begin{tikzpicture}
-\sdiagsribbonhalftwistdb{0}{1}
-\sdiagsribbonbright{0}{0}
+\sdiagsribbonhalftwist{0}{1}
+\sdiagsribbondual{0}{0}
 \sdiagsribbonhalftwistinv{2}{2}
-\sdiagsribbondark{2}{1}
-\sdiagsribbonhalftwistdb{2}{0}
+\sdiagsribbondual{2}{1}
+\sdiagsribbonhalftwist{2}{0}
 \sdiagsribbontwist{4}{0}
 \end{tikzpicture}
 
 \begin{tikzpicture}
-\sdiagsribbonhalftwistdb[2]{0}{1}
+\sdiagsribbonhalftwist[2]{0}{1}
 \sdiagsribbonhalftwistinv[0.8]{0}{0}
 \sdiagsribbonhalftwistinv[0.8]{1.2}{0}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\sdiagsribboncapdual{0}{2}
+\sdiagsribbonbraidDB{0}{1}
+\sdiagsribboncupdual{0}{0}
 \end{tikzpicture}
 
 Automatic advance:

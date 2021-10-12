@@ -48,19 +48,19 @@
 }
 
 % Ribbon diagrams for tortile monoidal categories
-\newcommand{\sdiagsribbonbright}[3][1]{
+\newcommand{\sdiagsribbondual}[3][1]{
   \fill[gray!40] (#2+.5,#3) rectangle (#2+#1+.5,#3+1);
-  \draw[thick] (#2+.5,#3) -- (#2+.5,#3+1);
+  \draw[very thick] (#2+.5,#3) -- (#2+.5,#3+1);
   \draw (#2+#1+.5,#3) -- (#2+#1+.5,#3+1);
 }
 
-\newcommand{\sdiagsribbondark}[3][1]{
-  \fill[gray!75] (#2+.5,#3) rectangle (#2+#1+.5,#3+1);
+\newcommand{\sdiagsribbon}[3][1]{
+  \fill[gray!40] (#2+.5,#3) rectangle (#2+#1+.5,#3+1);
   \draw (#2+.5,#3) -- (#2+.5,#3+1);
-  \draw[thick] (#2+#1+.5,#3) -- (#2+#1+.5,#3+1);
+  \draw[very thick] (#2+#1+.5,#3) -- (#2+#1+.5,#3+1);
 }
 
-\newcommand{\sdiagsribbonhalftwistdb}[3][1]{
+\newcommand{\sdiagsribbonhalftwist}[3][1]{
 \begin{scope}
   \clip (#2+.5,#3) rectangle ++(#1,.5);
   \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
@@ -69,23 +69,23 @@
 \end{scope}
 \begin{scope}
   \clip (#2+.5,#3+.5) rectangle ++(#1,.5);
-  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
     -- (#2+.5,#3)
     to[out=90,in=-90] (#2+#1+.5,#3+1);
 \end{scope}
 \begin{scope}
-  \clip (#2,#3) rectangle ++(#1+1,.47)
-        (#2,#3+.53) rectangle ++(#1+1,1);
+  \clip (#2,#3) rectangle ++(#1+1,.45)
+        (#2,#3+.55) rectangle ++(#1+1,1);
   \draw (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
 \end{scope}
-  \draw [thick]
+  \draw [very thick]
     (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
 }
 
-\newcommand{\sdiagsribbonhalftwistbd}[3][1]{
+\newcommand{\sdiagsribbonhalftwistdual}[3][1]{
 \begin{scope}
   \clip (#2+.5,#3) rectangle ++(#1,.5);
-  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
     -- (#2+.5,#3)
     to[out=90,in=-90] (#2+#1+.5,#3+1);
 \end{scope}
@@ -96,9 +96,9 @@
     to[out=90,in=-90] (#2+#1+.5,#3+1);
 \end{scope}
 \begin{scope}
-  \clip (#2,#3) rectangle ++(#1+1,.47)
-        (#2,#3+.53) rectangle ++(#1+1,1);
-  \draw [thick] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
+  \clip (#2,#3) rectangle ++(#1+1,.45)
+        (#2,#3+.55) rectangle ++(#1+1,1);
+  \draw [very thick] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
 \end{scope}
   \draw (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
 }
@@ -112,22 +112,65 @@
 \end{scope}
 \begin{scope}
   \clip (#2+.5,#3) rectangle ++(#1,.5);
-  \fill[gray!75] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
+  \fill[gray!40] (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3)
     -- (#2+.5,#3)
     to[out=90,in=-90] (#2+#1+.5,#3+1);
 \end{scope}
 \begin{scope}
-  \clip (#2,#3) rectangle ++(#1+1,.47)
-        (#2,#3+.53) rectangle ++(#1+1,1);
+  \clip (#2,#3) rectangle ++(#1+1,.45)
+        (#2,#3+.55) rectangle ++(#1+1,1);
   \draw (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
 \end{scope}
-  \draw [thick]
+  \draw [very thick]
     (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
 }
 
 \newcommand{\sdiagsribbontwist}[3][1]{
-  \sdiagsribbonhalftwistdb[#1]{#2}{#3+1}
-  \sdiagsribbonhalftwistbd[#1]{#2}{#3}
+  \sdiagsribbonhalftwist[#1]{#2}{#3+1}
+  \sdiagsribbonhalftwistdual[#1]{#2}{#3}
+}
+
+\newcommand{\sdiagsribboncap}[3][1]{
+  \fill[gray!40] (#2+#1+#1+1.5,#3) arc (0:180:#1+.5 and .5);
+  \fill[white] (#2+#1+1.5,#3) arc (0:180:.5 and .25);
+  \draw[very thick] (#2+#1+#1+1.5,#3) arc (0:180:#1+.5 and .5);
+  \draw (#2+#1+1.5,#3) arc (0:180:.5 and .25);
+}
+
+\newcommand{\sdiagsribboncapdual}[3][1]{
+  \fill[gray!40] (#2+#1+#1+1.5,#3) arc (0:180:#1+.5 and .5);
+  \fill[white] (#2+#1+1.5,#3) arc (0:180:.5 and .25);
+  \draw (#2+#1+#1+1.5,#3) arc (0:180:#1+.5 and .5);
+  \draw[very thick] (#2+#1+1.5,#3) arc (0:180:.5 and .25);
+}
+
+\newcommand{\sdiagsribboncup}[3][1]{
+  \fill[gray!40] (#2+#1+#1+1.5,#3+1) arc (360:180:#1+.5 and .5);
+  \fill[white] (#2+#1+1.5,#3+1) arc (360:180:.5 and .25);
+  \draw (#2+#1+#1+1.5,#3+1) arc (360:180:#1+.5 and .5);
+  \draw[very thick] (#2+#1+1.5,#3+1) arc (360:180:.5 and .25);
+}
+
+\newcommand{\sdiagsribboncupdual}[3][1]{
+  \fill[gray!40] (#2+#1+#1+1.5,#3+1) arc (360:180:#1+.5 and .5);
+  \fill[white] (#2+#1+1.5,#3+1) arc (360:180:.5 and .25);
+  \draw[very thick] (#2+#1+#1+1.5,#3+1) arc (360:180:#1+.5 and .5);
+  \draw (#2+#1+1.5,#3+1) arc (360:180:.5 and .25);
+}
+
+\newcommand{\sdiagsribbonbraid}[3][1]{
+  \fill[gray!40] (#2+.5,#3+1) -- (#2+#1+.5,#3+1)
+    to[out=-90,in=90] (#2+#1+#1+1.5,#3)
+    -- (#2+#1+1.5,#3)
+    to[out=90,in=-90] (#2+.5,#3+1);
+  \draw (#2+.5,#3+1) to[out=-90,in=90] (#2+#1+1.5,#3);
+  \draw[very thick] (#2+#1+.5,#3+1) to[out=-90,in=90] (#2+#1+#1+1.5,#3);
+  \fill[gray!40] (#2+#1+1.5,#3+1) to[out=-90,in=90] (#2+.5,#3)
+    -- (#2+#1+.5,#3)
+    to[out=90,in=-90] (#2+#1+#1+1.5,#3+1)
+    -- (#2+#1+1.5,#3+1);
+  \draw (#2+#1+1.5,#3+1) to[out=-90,in=90] (#2+.5,#3);
+  \draw[very thick] (#2+#1+#1+1.5,#3+1) to[out=-90,in=90] (#2+#1+.5,#3);
 }
 
 % Versions of the above commands where the counter sdiagsx is forwarded
@@ -136,6 +179,15 @@
 \newcommand{\sdiagsbr}{
   \setcounter{sdiagsx}{0}
   \addtocounter{sdiagsy}{-1}
+}
+
+\newcommand{\sdiagsreset}{
+  \setcounter{sdiagsx}{0}
+  \setcounter{sdiagsy}{0}
+}
+
+\newcommand{\sdiagsspace}[1][1]{
+  \addtocounter{sdiagsx}{#1}
 }
 
 \newcommand{\sdiagsSTRING}[1][1]{
