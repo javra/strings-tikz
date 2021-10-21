@@ -225,3 +225,12 @@
   \stepcounter{sdiagsx}
 }
 
+% A vertically aligned tikzpicture that resets the above counters
+
+\newcommand{\sdiag}[2][1]{
+{\vcenter{\hbox{
+\begin{tikzpicture}[scale=#1] \sdiagsreset
+#2
+\end{tikzpicture}}}}
+}
+
